@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "## these two functions create a special matrix, then calculates the inverse\n## of the special matrix, and caches the inverse.\n\n## this function creates a special matrix and returns a list of functions\n\nmakeCacheMatrix <- function(x = matrix()) {\n  m <- NULL\n  set <- function(y=matrix) {\n    x <<- y\n    m <<- NULL\n  }\n  get <- function() x\n  setsolve <- function(solve) m <<- solve\n  getsolve <- function() m\n  list(set = set, get = get,\n       setsolve = setsolve,\n       getsolve = getsolve)\n\n}\n\n\n## this function returns the inverse of the special matrix\n## it either calculates the inverse or returns the cached inverse\n## if there is one.\n\ncacheSolve <- function(x, ...) {\n  m <- x$getsolve()\n  if(!is.null(m)) {\n    message(\"getting cached data\")\n    return(m)\n  }\n  data <- x$get()\n  m <- solve(data, ...)\n  x$setsolve(m)\n  m\n        ## Return a matrix that is the inverse of 'x'\n}\n",
+    "created" : 1492156522708.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2185220641",
+    "id" : "72E9EC96",
+    "lastKnownWriteTime" : 1492003753,
+    "last_content_update" : 1492003753,
+    "path" : "~/ProgrammingAssignment2/ProgrammingAssignment2/cachematrix.R",
+    "project_path" : "ProgrammingAssignment2/cachematrix.R",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
